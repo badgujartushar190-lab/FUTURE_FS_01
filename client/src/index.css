@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-color: #050508;
+  --primary-color: #8B00FF;
+  --secondary-color: #00FFE5;
+}
+
+@layer base {
+  body {
+    @apply bg-[#050508] text-white font-inter overflow-x-hidden selection:bg-secondary selection:text-dark;
+  }
+
+  h1, h2, h3, h4, .font-header {
+    @apply font-orbitron uppercase tracking-widest;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 transition-all duration-500 hover:border-primary/50 hover:shadow-[0_0_30px_rgba(139,0,255,0.15)];
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply relative px-8 py-3 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,255,229,0.5)] active:scale-95 overflow-hidden;
+  }
+
+  .btn-outline {
+    @apply relative px-8 py-3 rounded-full border border-white/20 text-white font-bold transition-all duration-300 hover:bg-white/10 hover:border-white/40 active:scale-95;
+  }
+}
+
+/* Film Grain Effect */
+.film-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full hover:bg-secondary/70 transition-all;
+}
+
+/* Smooth Scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+section {
+  @apply py-24 px-[5%];
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
